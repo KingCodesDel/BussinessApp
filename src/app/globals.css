@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-porcelain text-ink dark:bg-ink dark:text-porcelain font-body antialiased;
+  }
+  ::selection {
+    @apply bg-evergreen-100 text-evergreen-700;
+  }
+  *:focus-visible {
+    outline: 2px solid theme("colors.evergreen.DEFAULT");
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .price {
+    @apply font-mono tracking-tight;
+  }
+  .card {
+    @apply bg-surface dark:bg-surface-dark border border-line dark:border-line-dark rounded-2xl shadow-card;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-evergreen px-5 py-2.5 text-sm font-medium text-white transition hover:bg-evergreen-600 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line dark:border-line-dark px-5 py-2.5 text-sm font-medium hover:bg-black/[0.03] dark:hover:bg-white/[0.04] transition;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line dark:border-line-dark bg-surface dark:bg-surface-dark px-3.5 py-2.5 text-sm outline-none focus:border-evergreen transition;
+  }
+  .label-eyebrow {
+    @apply text-xs font-mono uppercase tracking-[0.14em] text-slate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
